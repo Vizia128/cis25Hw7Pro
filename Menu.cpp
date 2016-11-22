@@ -81,9 +81,7 @@ void menuHw7Ex1() {
 			break;
 		case 3:
 			if (c1ptr == nullptr && c2ptr == nullptr) {
-				init(&c1ptr, &c2ptr);
-				cout << "\n    Circle 1 -- " << *c1ptr
-					<< "\n    Circle 2 -- " << *c2ptr;
+				cout << "\n    Circles not initialized  ";
 			}
 
 			else do {
@@ -127,17 +125,28 @@ void menuHw7Ex1() {
 			} while (option != 5);
 			break;
 		case 4:
-			c1ptr->overlap(*c2ptr);
+			if (c1ptr == nullptr && c2ptr == nullptr)
+				cout << "\n    Circles not initialized  ";
+			else
+				c1ptr->overlap(*c2ptr);
 			break;
 		case 5:
-			cout << "\n\n    Combining Circles ...";
-			c1ptr->combine(*c2ptr);
+			if (c1ptr == nullptr && c2ptr == nullptr)
+				cout << "\n    Circles not initialized  ";
+			else {
+				cout << "\n\n    Combining Circles ...";
+				c1ptr->combine(*c2ptr);
+			}
 			break;
 		case 6:
-			//TODO
+			if (c1ptr == nullptr && c2ptr == nullptr)
+				cout << "\n    Circles not initialized  ";
+			else
+				cout << "\n    Circle 1 -- " << *c1ptr
+					<< "\n    Circle 2 -- " << *c2ptr;
 			break;
 		case 7:
-			//TODO
+			cout << "\n    Having fun!";
 			break;
 		case 12:
 			c1ptr = new Circle(0, 0, 2);
@@ -145,7 +154,7 @@ void menuHw7Ex1() {
 			c1ptr->combine(*c2ptr);
 			break;
 		default:
-			//TODO
+			cout << "\n  WRONG ANSWER ...";
 			break;
 		}
 
