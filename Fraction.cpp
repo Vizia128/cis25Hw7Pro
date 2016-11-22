@@ -41,6 +41,18 @@ void Fraction::reduce() {
 	denom /= GCD;
 }
 
+double Fraction::sqroot()const {
+	double f = (double)(num) / (double)(denom);
+	double sq = f / 2.0;
+	double x1 = 0.0;
+	while (sq != x1) {
+		x1 = sq;
+		sq = (sq + f / sq) / 2.0;
+	}
+	return sq;
+}
+
+
 
 
 Fraction Fraction::add(const Fraction& f1)const {
@@ -153,6 +165,39 @@ Fraction Fraction::operator/=(const Fraction& f) {
 }
 
 
+bool Fraction::operator==(const Fraction& F)const {
+	if (num == F.num && denom == F.denom)
+		return true;
+	else
+		return false;
+}
+bool Fraction::operator<(const Fraction& F)const {
+	if (num * F.denom < F.num * denom)
+		return true;
+	else
+		return false;
+}
+bool Fraction::operator>(const Fraction& F)const {
+	if (num * F.denom > F.num * denom)
+		return true;
+	else
+		return false;
+}
+bool Fraction::operator<=(const Fraction& F)const {
+	if (num * F.denom <= F.num * denom)
+		return true;
+	else
+		return false;
+}
+bool Fraction::operator>=(const Fraction& F)const {
+	if (num * F.denom >= F.num * denom)
+		return true;
+	else
+		return false;
+}
+
+
+
 
 Fraction Fraction::operator=(const int f) {
 	num = f;
@@ -178,6 +223,10 @@ Fraction Fraction::operator/(const int f) {
 	return Fraction(num, denom * f);
 }
 
+
+Fraction::operator double() {
+	return(double(num) / double(denom));
+}
 
 
 std::ostream& operator<<(std::ostream &out, const Fraction &F) {

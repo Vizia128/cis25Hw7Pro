@@ -11,7 +11,7 @@ Point::Point() : frx(), fry() {
 }
 Point::Point(int nx) : frx(nx), fry(nx) {
 }
-Point::Point(int nx, int dx) : frx(nx, dx), fry(nx, dx) {
+Point::Point(int x, int y) : frx(x), fry(y) {
 }
 Point::Point(int nx, int dx, int ny, int dy) : frx(nx, dx), fry(ny, dy) {
 }
@@ -24,6 +24,16 @@ Point::Point(const Point& ref) : frx(ref.frx), fry(ref.fry) {
 Point::~Point() {
 	cout << "\nCaling ~Point";
 }
+
+
+
+Fraction Point::getFrx() {
+	return frx;
+}
+Fraction Point::getFry() {
+	return fry;
+}
+
 
 
 int Point::getQuadrant(const Point& p) {
@@ -95,6 +105,16 @@ void Point::print() {
 }
 
 
+
+double Point::distance(const Point& p2) {
+	return  ((frx - p2.frx) * (frx - p2.frx)
+		+ (fry - p2.fry) * (fry - p2.fry)).sqroot();
+}
+
+
+
+
+
 Point Point::operator=(const Point& p) {
 	frx = p.frx;
 	fry = p.fry;
@@ -102,27 +122,19 @@ Point Point::operator=(const Point& p) {
 }
 
 Point Point::operator+(const Point& p) {
-	return (frx.getNum() * p.frx.getDenom() + frx.getDenom() * p.frx.getNum(),
-		frx.getDenom() * p.frx.getDenom(),
-		fry.getNum() * p.fry.getDenom() + fry.getDenom() * p.fry.getNum(),
-		fry.getDenom() * p.fry.getDenom());
+	return (frx + p.frx, fry + p.fry);
 }
 
 Point Point::operator-(const Point& p) {
-	return (frx.getNum() * p.frx.getDenom() - frx.getDenom() * p.frx.getNum(),
-		frx.getDenom() * p.frx.getDenom(),
-		fry.getNum() * p.fry.getDenom() - fry.getDenom() * p.fry.getNum(),
-		fry.getDenom() * p.fry.getDenom());
+	return (frx - p.frx, fry - p.fry);
 }
 
 Point Point::operator*(const Point& p) {
-	return (frx.getNum() * p.frx.getNum(), frx.getDenom() * p.frx.getDenom(),
-		fry.getNum() * p.fry.getNum(), fry.getDenom() * p.fry.getDenom());
+	return (frx * p.frx, fry * p.fry);
 }
 
 Point Point::operator/(const Point& p) {
-	return (frx.getNum() * p.frx.getDenom(), frx.getDenom() * p.frx.getNum(),
-		fry.getNum() * p.fry.getDenom(), fry.getDenom() * p.fry.getNum());
+	return (frx * p.fry, fry * p.frx);
 }
 
 

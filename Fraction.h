@@ -19,13 +19,14 @@ public:
 
 	void update(int);
 	void reduce();
-
+	double sqroot()const;
+	
 	Fraction add(const Fraction&)const;
 	Fraction subtract(const Fraction&)const;
 	Fraction multiply(const Fraction&)const;
 	Fraction divide(const Fraction&)const;
 
-
+	
 	friend	Fraction add(const Fraction&, const Fraction&);
 	friend	Fraction subtract(const Fraction&, const Fraction&);
 	friend	Fraction multiply(const Fraction&, const Fraction&);
@@ -43,11 +44,20 @@ public:
 	Fraction operator*=(const Fraction&);
 	Fraction operator/=(const Fraction&);
 
+	bool operator==(const Fraction&)const;
+	bool operator<(const Fraction&)const;
+	bool operator>(const Fraction&)const;
+	bool operator<=(const Fraction&)const;
+	bool operator>=(const Fraction&)const;
+
 	Fraction operator=(const int);
 	Fraction operator+(const int);
 	Fraction operator-(const int);
 	Fraction operator*(const int);
 	Fraction operator/(const int);
+
+	operator double();
+
 
 	friend std::ostream& operator<<(std::ostream &out, const Fraction &F);
 //	friend std::ostream& operator>>(std::ostream &in, const Fraction &F);

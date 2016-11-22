@@ -53,3 +53,12 @@ int GreatestCommonDivisor(int n, int d) {
 	return d == 0 ? n : GreatestCommonDivisor(d, n % d);
 }
 
+double sqroot(double x) {
+	double sq = x / 2.0;
+	double x1 = 0.0;
+	while (sq != x1) {
+		x1 = sq;
+		sq = (sq + x / sq) / 2.0;
+	}
+	return sq;
+}

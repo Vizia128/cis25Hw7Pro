@@ -17,6 +17,8 @@ public:
 	Point(const Point&);
 	~Point();
 	
+	Fraction getFrx();
+	Fraction getFry();
 
 	static int getQuadrant(const Point&);
 	int getQuadrant()const;
@@ -28,6 +30,7 @@ public:
 	void flipThroughOrigin();
 	void print();
 
+	double distance(const Point&);
 
 	Point operator=(const Point&);
 	Point operator+(const Point&);
