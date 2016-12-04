@@ -152,9 +152,9 @@ Circle Circle::operator/(const Fraction& F) {
 
 
 
-std::ostream& operator<<(std::ostream &out, const Circle &C) {
-	out << "(x : " << C.cPtr->getFrx()
-		<< ", y : " << C.cPtr->getFry()
-		<< ", r : " << *C.rPtr << ")";
-	return out;
-}
+//std::ostream& operator<<(std::ostream &out, const Circle &C) {
+//	out << "(x : " << C.cPtr->getFrx()
+//		<< ", y : " << C.cPtr->getFry()
+//		<< ", r : " << *C.rPtr << ")";
+//	return out;
+//}

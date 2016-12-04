@@ -6,11 +6,14 @@
 #include "PointUtility.h"
 #include "Circle.h"
 #include "CircleUtility.h"
+#include "Rectangle.h"
 using namespace std;
 
 void menuHw7Ex1() {
 	Circle* c1ptr = nullptr;
 	Circle* c2ptr = nullptr;
+	Shape* s1ptr = nullptr;
+	Shape* s2ptr = nullptr;
 	Point* movePtr = nullptr;
 	int overlap = -1;
 	int option = -1;
@@ -149,9 +152,12 @@ void menuHw7Ex1() {
 			cout << "\n    Having fun!";
 			break;
 		case 12:
-			c1ptr = new Circle(0, 0, 2);
-			c2ptr = new Circle(1, 0, 2);
-			c1ptr->combine(*c2ptr);
+
+			
+			s1ptr = new Circle(0, 0, 2);
+			s2ptr = new Rectangle(1, 0, 2, 4);
+			cout << "\n*s1ptr : " << *s1ptr
+				<< "\n*s2ptr : " << *s2ptr;
 			break;
 		default:
 			cout << "\n  WRONG ANSWER ...";

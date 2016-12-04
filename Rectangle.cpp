@@ -2,6 +2,7 @@
 #include "FractionUtility.h"
 #include "Point.h"
 #include "PointUtility.h"
+#include "Shape.h"
 #include "Circle.h"
 #include "CircleUtility.h"
 #include "Rectangle.h"
@@ -54,8 +55,8 @@ Fraction Rectangle::getHeight()const {
 
 
 int Rectangle::overlap(const Rectangle& R)const {
-	Fraction delx = (cPtr->getFrx() - R.cPtr->getFrx);
-	Fraction dely = (cPtr->getFry() - R.cPtr->getFry);
+	Fraction delx = (cPtr->getFrx() - R.cPtr->getFrx());
+	Fraction dely = (cPtr->getFry() - R.cPtr->getFry());
 	delx < Fraction() ? -delx : delx;
 	delx < Fraction() ? -dely : dely;
 
@@ -83,14 +84,15 @@ int Rectangle::overlap(const Rectangle& R)const {
 
 void Rectangle::combine(const Rectangle& R)const {
 	int type = this->overlap(R);
-	
+	Fraction* del;
+
 	switch (type) {
 	case 1: case 2: case 4: case 5:
 		break;
 	case 3:
-		Fraction* del = new Fraction[4];
-		*(del + 0) = cPtr->getFrx() - R.cPtr->getFrx;
-		*(del + 1) = cPtr->getFry() - R.cPtr->getFry;
+		del = new Fraction[4];
+		*(del + 0) = cPtr->getFrx() - R.cPtr->getFrx();
+		*(del + 1) = cPtr->getFry() - R.cPtr->getFry();
 		*(del + 2) = *(del + 0) < Fraction() ? -*(del + 0) : *(del + 0);
 		*(del + 3) = *(del + 1) < Fraction() ? -*(del + 1) : *(del + 1);
 
@@ -100,6 +102,7 @@ void Rectangle::combine(const Rectangle& R)const {
 				cPtr->getFry() - *(del + 1),
 				*R.lPtr + *lPtr - *(del + 2),
 				*R.hPtr + *hPtr - *(del + 3));
+		delete[] del;
 		break;
 	default:
 			cout << "\n  ERROR!!";
@@ -107,12 +110,13 @@ void Rectangle::combine(const Rectangle& R)const {
 	}
 }
 
-Fraction Rectangle::area()const {
-	return Fraction(*lPtr * *hPtr);
+double Rectangle::area()const {
+	return double(*lPtr * *hPtr);
 }
-Fraction Rectangle::perimiter()const {
-	return Fraction(*lPtr * *hPtr * 2);
+double Rectangle::perimiter()const {
+	return double(*lPtr * *hPtr * 2);
 }
+
 
 Rectangle Rectangle::operator=(const Rectangle& R) {
 	*cPtr = *R.cPtr;
@@ -135,10 +139,10 @@ Rectangle Rectangle::operator/(const Fraction& F) {
 }
 
 
-
-std::ostream& operator<<(std::ostream &out, const Rectangle &R) {
-	out << "Center : " << R.getLocation()
-		<< ", Length : " << R.getLength()
-		<< ", Height : " << R.getHeight();
-	return out;
-}
+//
+//std::ostream& operator<<(std::ostream &out, const Rectangle &R) {
+//	out << "Center : " << *R.cPtr
+//		<< ", Length : " << *R.lPtr
+//		<< ", Height : " << *R.hPtr;
+//	return out;
+//}

@@ -5,7 +5,7 @@
 using namespace std;
 
 
-class Rectangle : Shape {
+class Rectangle : virtual public Shape {
 public:
 	Rectangle();
 	Rectangle(int, int, int, int);
@@ -20,8 +20,8 @@ public:
 	Fraction getHeight()const;
 	int overlap(const Rectangle&)const;
 //	double overlappingArea(const Rectangle&)const;
-	Fraction area()const;
-	Fraction perimiter()const;
+	double area()const;
+	double perimiter()const;
 
 	void combine(const Rectangle&)const;
 
@@ -31,9 +31,14 @@ public:
 	Rectangle operator*(const Fraction&);
 	Rectangle operator/(const Fraction&);
 
+	//friend std::ostream& operator<<(std::ostream &out, const Rectangle &R);
 
-	friend std::ostream& operator<<(std::ostream &out, const Fraction &C);
-
+protected:
+	virtual void printMyself(std::ostream& out) const {
+		out << "Center : " << *cPtr
+			<< ", Length : " << *lPtr
+			<< ", Height : " << *hPtr;
+	}
 private:
 	Point *cPtr;
 	Fraction *lPtr;

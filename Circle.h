@@ -6,7 +6,7 @@ using namespace std;
 //add virtual function for area and perimiter
 //add class rectangle
 
-class Circle : Shape {
+class Circle : public Shape {
 public:
 	Circle();
 	Circle(int, int, int);
@@ -31,8 +31,14 @@ public:
 	Circle operator*(const Fraction&);
 	Circle operator/(const Fraction&);
 	
+//	friend std::ostream& operator<<(std::ostream &out, const Circle &C);
 
-	friend std::ostream& operator<<(std::ostream &out, const Circle &C);
+protected:
+	virtual void printMyself(std::ostream& out) const {
+		out << "(x : " << cPtr->getFrx()
+			<< ", y : " << cPtr->getFry()
+			<< ", r : " << *rPtr << ")";
+	}
 
 private:
 	Point *cPtr;
