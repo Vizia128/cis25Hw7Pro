@@ -1,8 +1,12 @@
 #ifndef CIRCLE_H
 #define CIRCLE_H
+#include "Shape.h"
 using namespace std;
 
-class Circle{
+//add virtual function for area and perimiter
+//add class rectangle
+
+class Circle : Shape {
 public:
 	Circle();
 	Circle(int, int, int);
@@ -16,8 +20,10 @@ public:
 	Fraction getRadius()const;
 	int overlap(const Circle&)const;
 	double overlappingArea(const Circle&)const;
-	
 	void combine(const Circle&)const;
+
+	double area()const;
+	double perimiter()const;
 
 	Circle operator=(const Circle&);
 	Circle operator+(const Point&);

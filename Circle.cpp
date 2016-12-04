@@ -95,7 +95,7 @@ void Circle::combine(const Circle& c)const {
 	double x, y, r;
 	double A1 = double(*this->rPtr* *this->rPtr) * 3.141592653;
 	double A2 = double(*c.rPtr* *c.rPtr) * 3.141592653;
-	int ovl = this->overlap(c);
+	int type = this->overlap(c);
 	
 	//cout << "\n A1 : " << A1 << "\t A2 : " << A2  << "\t overlap# : " << ovl;
 
@@ -104,7 +104,7 @@ void Circle::combine(const Circle& c)const {
 	y = (double(this->cPtr->getFry()) * A1
 		+ double(c.cPtr->getFry()) * A2) / (A1 + A2);
 
-	switch (ovl) {
+	switch (type) {
 	case 1: case 2:
 		r = sqroot((A1 + A2) / 3.141592653);
 		break;
@@ -122,6 +122,14 @@ void Circle::combine(const Circle& c)const {
 		<< x << ", " << y << ")"
 		<< "\n      and has a radius of " << r << endl;
 }
+
+double Circle::area()const {
+	return double(*rPtr * *rPtr * 355 / 113);
+}
+double Circle::perimiter()const {
+	return double(*rPtr * 710 / 113);
+}
+
 
 Circle Circle::operator=(const Circle& C) { 
 	*cPtr = *C.cPtr;
