@@ -16,18 +16,28 @@ public:
 	Circle(const Fraction&, const Fraction&, const Fraction&);
 	Circle(const Circle&);
 
-	Point getPoint();
+	Point getCenter();
+	Fraction getRadius();
 
 	void moveByX(char);
 	void moveByY(char);
+
+	void areaCompare(const Shape&)const;
+	void areaCompare(const Rectangle&)const;
+	void areaCompare(const Circle&)const;
+
+	void perimeterCompare(const Shape&)const;
+	void perimeterCompare(const Rectangle&)const;
+	void perimeterCompare(const Circle&)const;
 
 	int overlapType(const Shape&)const;
 	int overlapType(const Rectangle&)const;
 	int overlapType(const Circle&)const;
 
-	void overlapArea(const Shape&)const;
-	void overlapArea(const Rectangle&)const;
-	void overlapArea(const Circle&)const;
+	void overlapShape(const Shape&)const;
+	void overlapShape(const Rectangle&)const;
+	void overlapShape(const Circle&)const;
+	double overlapArea(const Circle&)const;
 
 	const char* getType()const;
 	friend std::ostream& operator<<(std::ostream &out, const Circle &C);

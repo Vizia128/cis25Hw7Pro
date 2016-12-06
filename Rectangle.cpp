@@ -25,8 +25,14 @@ Rectangle::Rectangle(const Rectangle& R)
 	: cPtr(new Point(*R.cPtr)), lPtr(new Fraction(*R.lPtr)), wPtr(new Fraction(*R.wPtr)) {
 }
 
-Point Rectangle::getPoint() {
+Point Rectangle::getCenter() {
 	return *cPtr;
+}
+Point Rectangle::getLength() {
+	return *lPtr;
+}
+Point Rectangle::getWidth() {
+	return *wPtr;
 }
 
 void Rectangle::moveByX(char l) {
@@ -74,6 +80,65 @@ void Rectangle::moveByY(char l) {
 	}
 }
 
+void Rectangle::areaCompare(const Shape& with)const {
+	with.areaCompare(*this);
+}
+void Rectangle::areaCompare(const Rectangle& C)const {
+	Fraction area1(*lPtr * *wPtr);
+	Fraction area2(*C.lPtr * *C.wPtr);
+
+	cout << "\n        Rectangle 1:"
+		<< "\n            Center: " << *cPtr
+		<< "\n            Length: " << *lPtr
+		<< "\n            Width:  " << *wPtr
+		<< "\n            Area:   " << area1;
+
+	if (area1 > area2)
+		cout << "\n\n        Has a larger area than" << endl;
+	else if (area1 == area2)
+		cout << "\n\n        Has an equal area to" << endl;
+	else
+		cout << "\n\n        Has a smaller area than" << endl;
+
+	cout << "\n        Rectangle 1:"
+		<< "\n            Center: " << *C.cPtr
+		<< "\n            Length: " << *C.lPtr
+		<< "\n            Width:  " << *C.wPtr
+		<< "\n            Area:   " << area2;
+}
+void Rectangle::areaCompare(const Circle&)const {
+	cout << "\n    Rectangle::areaCompare(const Circle&)";
+}
+
+void Rectangle::perimeterCompare(const Shape& with)const {
+	with.perimeterCompare(*this);
+}
+void Rectangle::perimeterCompare(const Rectangle& C)const {
+	Fraction perim1((*lPtr + *wPtr)*2);
+	Fraction perim2((*C.lPtr + *C.wPtr)*2);
+
+	cout << "\n        Rectangle 1:"
+		<< "\n            Center:      " << *cPtr
+		<< "\n            Length:      " << *lPtr
+		<< "\n            Width:       " << *wPtr
+		<< "\n            Perimeter:   " << perim1;
+
+	if (perim1 > perim2)
+		cout << "\n\n        Has a larger perimeter than" << endl;
+	else if (perim1 == perim2)
+		cout << "\n\n        Has an equal perimeter to" << endl;
+	else
+		cout << "\n\n        Has a smaller perimeter than" << endl;
+
+	cout << "\n        Rectangle 1:"
+		<< "\n            Center:      " << *C.cPtr
+		<< "\n            Length:      " << *C.lPtr
+		<< "\n            Width:       " << *C.wPtr
+		<< "\n            Perimeter:   " << perim2;
+}
+void Rectangle::perimeterCompare(const Circle&)const {
+	cout << "\n    Rectangle::perimeterCompare(const Circle&)";
+}
 
 int Rectangle::overlapType(const Shape& with)const {
 //	cout << "\nRect::overlapType(const Shap&)const";
@@ -113,10 +178,10 @@ int Rectangle::overlapType(const Circle& w)const {
 	return 21;
 }
 
-void Rectangle::overlapArea(const Shape& with)const {
-	with.overlapArea(*this);
+void Rectangle::overlapShape(const Shape& with)const {
+	with.overlapShape(*this);
 }
-void Rectangle::overlapArea(const Rectangle& R)const {
+void Rectangle::overlapShape(const Rectangle& R)const {
 	int type = this->overlapType(R);
 	Fraction* del;
 	switch (type) {
@@ -144,8 +209,8 @@ void Rectangle::overlapArea(const Rectangle& R)const {
 		break;
 	}
 }
-void Rectangle::overlapArea(const Circle& C)const {
-	cout << "\/ERROR Rectangle::overlapArea(const Circle&)";
+void Rectangle::overlapShape(const Circle& C)const {
+	cout << "\/ERROR Rectangle::overlapShape(const Circle&)";
 }
 
 const char* Rectangle::getType()const {

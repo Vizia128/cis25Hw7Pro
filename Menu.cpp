@@ -76,10 +76,10 @@ void menuHw7Ex1() {
 			}
 
 			else {
-				cout << "\n    " << s1ptr->getType() << " 1 is centered in Quadrant : "
-					<< s1ptr->getPoint().getQuadrant()
-					<< "\n    " << s2ptr->getType() << " 2 is centered in Quadrant : "
-					<< s2ptr->getPoint().getQuadrant();
+				//cout << "\n    " << s1ptr->getType() << " 1 is centered in Quadrant : "
+				//	<< s1ptr->getCenter().getQuadrant()
+				//	<< "\n    " << s2ptr->getType() << " 2 is centered in Quadrant : "
+				//	<< s2ptr->getCenter().getQuadrant();
 				s1ptr->overlapType(*s2ptr);
 			}
 			break;
@@ -189,14 +189,41 @@ void menuHw7Ex1() {
 		case 4:
 			if (s1ptr == nullptr && s2ptr == nullptr)
 				cout << "\n    Shapes not initialized  ";
-			else
-				cout << "\n    AREA TODO";
+			else do {
+				cout << "\n    *****************************************"
+					<< "\n    * SubMenu - Comparing                   *"
+					<< "\n    *           (With respect to Circle 1)  *"
+					<< "\n    * 1. Area                               *"
+					<< "\n    * 2. Perimeter                          *"
+					<< "\n    * 3. Displaying                         *"
+					<< "\n    * 4. Returning                          *"
+					<< "\n    *****************************************"
+					<< "\n    Select an option(use integer value only) : ";
+				cin >> option;
+				switch (option) {
+				case 1:
+					s1ptr->areaCompare(*s2ptr);
+					break;
+				case 2:
+					s1ptr->perimeterCompare(*s2ptr);
+					break;
+				case 3:
+					cout << "\n      " << s1ptr->getType() << " 1 -- " << *s1ptr
+						<< "\n      " << s2ptr->getType() << " 2 -- " << *s2ptr;
+					break;
+				case 4:
+					cout << "\n        Returning to previous menu!";
+				default:
+					cout << "\n    WRONG OPTION!\n";
+					break;
+				}
+			} while (option != 4);
 			break;
 		case 5:
 			if (s1ptr == nullptr && s2ptr == nullptr)
 				cout << "\n    Shapes not initialized  ";
 			else {
-				s1ptr->overlapArea(*s2ptr);
+				s1ptr->overlapShape(*s2ptr);
 			}
 			break;
 		case 6:

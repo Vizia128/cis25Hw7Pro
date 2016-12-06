@@ -8,18 +8,26 @@ class Circle;
 
 class Shape {
 public:
-	virtual Point getPoint() = 0;
+	virtual Point getCenter() = 0;
 
 	virtual void moveByX(char) = 0;
 	virtual void moveByY(char) = 0;
+
+	virtual void areaCompare(const Shape&)const = 0;
+	virtual void areaCompare(const Rectangle&)const = 0;
+	virtual void areaCompare(const Circle&)const = 0;
+
+	virtual void perimeterCompare(const Shape&)const = 0;
+	virtual void perimeterCompare(const Rectangle&)const = 0;
+	virtual void perimeterCompare(const Circle&)const = 0;
 
 	virtual int overlapType(const Shape&)const = 0;
 	virtual int overlapType(const Rectangle&)const = 0;
 	virtual int overlapType(const Circle&)const = 0;
 
-	virtual void overlapArea(const Shape&)const = 0;
-	virtual void overlapArea(const Rectangle&)const = 0;
-	virtual void overlapArea(const Circle&)const = 0;
+	virtual void overlapShape(const Shape&)const = 0;
+	virtual void overlapShape(const Rectangle&)const = 0;
+	virtual void overlapShape(const Circle&)const = 0;
 
 	virtual const char* getType()const = 0;
 	friend std::ostream& operator<<(std::ostream &out, const Shape &S) {
