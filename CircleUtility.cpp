@@ -11,8 +11,10 @@ void init(Circle** c1, Circle** c2) {
 	Fraction *frxPtr = nullptr;
 	Fraction *fryPtr = nullptr;
 	Fraction *rPtr = nullptr;
+	delete *c1;
+	delete *c2;
 
-	cout << "\nEnter dimensions of Cirlce 1"
+	cout << "\nEnter dimensions of Circle 1"
 		<< "\n    X-coordinate - ";
 	init(&frxPtr);
 	cout << "\n    Y-coordinate - ";
@@ -24,7 +26,7 @@ void init(Circle** c1, Circle** c2) {
 	delete fryPtr;
 	delete rPtr;
 
-	cout << "\nEnter dimensions of Cirlce 2"
+	cout << "\nEnter dimensions of Circle 2"
 		<< "\n    X-coordinate - ";
 	init(&frxPtr);
 	cout << "\n    Y-coordinate - ";
@@ -41,8 +43,9 @@ void init(Circle** c) {
 	Fraction *frxPtr = nullptr;
 	Fraction *fryPtr = nullptr;
 	Fraction *rPtr = nullptr;
+	delete *c;
 
-	cout << "\nEnter dimensions of Cirlce"
+	cout << "\nEnter dimensions of Circle"
 		<< "\n    X-coordinate - ";
 	init(&frxPtr);
 	cout << "\n    Y-coordinate - ";

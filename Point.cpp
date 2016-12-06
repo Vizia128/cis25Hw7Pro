@@ -22,7 +22,7 @@ Point::Point(const Fraction& fx, const Fraction& fy) : frx(fx), fry(fy) {
 Point::Point(const Point& ref) : frx(ref.frx), fry(ref.fry) {
 }
 Point::~Point() {
-	cout << "\nCaling ~Point";
+//	cout << "\nCaling ~Point";
 }
 
 
@@ -122,19 +122,19 @@ Point Point::operator=(const Point& p) {
 }
 
 Point Point::operator+(const Point& p) {
-	return (frx + p.frx, fry + p.fry);
+	return Point(frx + p.frx, fry + p.fry);
 }
 
 Point Point::operator-(const Point& p) {
-	return (frx - p.frx, fry - p.fry);
+	return Point(frx - p.frx, fry - p.fry);
 }
 
 Point Point::operator*(const Point& p) {
-	return (frx * p.frx, fry * p.fry);
+	return Point(frx * p.frx, fry * p.fry);
 }
 
 Point Point::operator/(const Point& p) {
-	return (frx * p.fry, fry * p.frx);
+	return Point(frx * p.fry, fry * p.frx);
 }
 
 

@@ -6,7 +6,9 @@ using namespace std;
 //add virtual function for area and perimiter
 //add class rectangle
 
-class Circle : Shape {
+class Rectangle;
+
+class Circle : public Shape {
 public:
 	Circle();
 	Circle(int, int, int);
@@ -14,29 +16,27 @@ public:
 	Circle(const Fraction&, const Fraction&, const Fraction&);
 	Circle(const Circle&);
 
-	void moveBy();
-	
-	Point getLocation()const;
-	Fraction getRadius()const;
-	int overlap(const Circle&)const;
-	double overlappingArea(const Circle&)const;
-	void combine(const Circle&)const;
+	Point getPoint();
 
-	double area()const;
-	double perimiter()const;
+	void moveByX(char);
+	void moveByY(char);
 
-	Circle operator=(const Circle&);
-	Circle operator+(const Point&);
-	Circle operator-(const Point&);
-	Circle operator*(const Fraction&);
-	Circle operator/(const Fraction&);
-	
+	int overlapType(const Shape&)const;
+	int overlapType(const Rectangle&)const;
+	int overlapType(const Circle&)const;
 
+	void overlapArea(const Shape&)const;
+	void overlapArea(const Rectangle&)const;
+	void overlapArea(const Circle&)const;
+
+	const char* getType()const;
 	friend std::ostream& operator<<(std::ostream &out, const Circle &C);
-
+protected:
+	void printMyself(std::ostream& out)const;
 private:
 	Point *cPtr;
 	Fraction *rPtr;
-
 };
+
+
 #endif

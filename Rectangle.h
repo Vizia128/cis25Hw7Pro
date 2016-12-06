@@ -4,8 +4,9 @@
 #include "Shape.h"
 using namespace std;
 
+class Circle;
 
-class Rectangle : Shape {
+class Rectangle : public Shape {
 public:
 	Rectangle();
 	Rectangle(int, int, int, int);
@@ -13,31 +14,27 @@ public:
 	Rectangle(const Fraction&, const Fraction&, const Fraction&, const Fraction&);
 	Rectangle(const Rectangle&);
 
-	void moveBy();
+	Point getPoint();
 
-	Point getLocation()const;
-	Fraction getLength()const;
-	Fraction getHeight()const;
-	int overlap(const Rectangle&)const;
-//	double overlappingArea(const Rectangle&)const;
-	Fraction area()const;
-	Fraction perimiter()const;
+	void moveByX(char);
+	void moveByY(char);
 
-	void combine(const Rectangle&)const;
+	int overlapType(const Shape&)const;
+	int overlapType(const Rectangle&)const;
+	int overlapType(const Circle&)const;
 
-	Rectangle operator=(const Rectangle&);
-	Rectangle operator+(const Point&);
-	Rectangle operator-(const Point&);
-	Rectangle operator*(const Fraction&);
-	Rectangle operator/(const Fraction&);
-
-
-	friend std::ostream& operator<<(std::ostream &out, const Fraction &C);
-
+	void overlapArea(const Shape&)const;
+	void overlapArea(const Rectangle&)const;
+	void overlapArea(const Circle&)const;
+	
+	const char* getType()const;
+	friend std::ostream& operator<<(std::ostream &out, const Rectangle &C);
+protected:
+	void printMyself(std::ostream& out)const;
 private:
 	Point *cPtr;
 	Fraction *lPtr;
-	Fraction *hPtr;
+	Fraction *wPtr;
 
 };
 
