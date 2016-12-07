@@ -183,26 +183,19 @@ void Rectangle::overlapShape(const Shape& with)const {
 }
 void Rectangle::overlapShape(const Rectangle& R)const {
 	int type = this->overlapType(R);
-	Fraction* del;
+	Fraction del[4];
+	del[0] = cPtr->getFrx() - R.cPtr->getFrx();
+	del[1] = cPtr->getFry() - R.cPtr->getFry();
+	del[2] = del[0] < Fraction() ? -del[0] : del[0];
+	del[3] = del[1] < Fraction() ? -del[1] : del[1];
 	switch (type) {
 	case 1: case 2: case 4: case 5:
 		break;
 	case 3:
-		del = new Fraction[4];
-		*(del + 0) = cPtr->getFrx() - R.cPtr->getFrx();
-		*(del + 1) = cPtr->getFry() - R.cPtr->getFry();
-		*(del + 2) = *(del + 0) < Fraction() ? -*(del + 0) : *(del + 0);
-		*(del + 3) = *(del + 1) < Fraction() ? -*(del + 1) : *(del + 1);
-
 		cout << "\n    The rectangle caused by the overlap :"
-			"\n      "
-			<< Rectangle(cPtr->getFrx() - *(del + 0),
-				cPtr->getFry() - *(del + 1),
-				*R.lPtr + *lPtr - *(del + 2),
-				*R.wPtr + *wPtr - *(del + 3))
 			<< "\n    Has Area : "
-			<< (*R.lPtr + *lPtr - *(del + 2) *
-			*R.wPtr + *wPtr - *(del + 3));
+			<< ((*R.lPtr + *lPtr)/2 - del[2] *
+			((*R.wPtr + *wPtr) - del[3]));
 		break;
 	default:
 		cout << "\n  ERROR!!";

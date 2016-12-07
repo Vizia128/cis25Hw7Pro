@@ -24,6 +24,7 @@ void init(Shape** c1, Shape** c2, string type) {
 		init(&fryPtr);
 		cout << "\n    radius - ";
 		init(&rPtr);
+		*rPtr *= *rPtr < Fraction() ? -1 : 1;
 		*c1 = new Circle(*frxPtr, *fryPtr, *rPtr);
 		delete frxPtr;
 		delete fryPtr;
@@ -36,6 +37,7 @@ void init(Shape** c1, Shape** c2, string type) {
 		init(&fryPtr);
 		cout << "\n    radius - ";
 		init(&rPtr);
+		*rPtr *= *rPtr < Fraction() ? -1 : 1;
 		*c2 = new Circle(*frxPtr, *fryPtr, *rPtr);
 		delete frxPtr;
 		delete fryPtr;
@@ -50,8 +52,10 @@ void init(Shape** c1, Shape** c2, string type) {
 		init(&fryPtr);
 		cout << "\n    Length - ";
 		init(&rPtr);
-		cout << "\n    Height - ";
+		cout << "\n    Width - ";
 		init(&hPtr);
+		*rPtr *= *rPtr < Fraction() ? -1 : 1;
+		*hPtr *= *hPtr < Fraction() ? -1 : 1;
 		*c1 = new Rectangle(*frxPtr, *fryPtr, *rPtr, *hPtr);
 		delete frxPtr;
 		delete fryPtr;
@@ -65,8 +69,10 @@ void init(Shape** c1, Shape** c2, string type) {
 		init(&fryPtr);
 		cout << "\n    Length - ";
 		init(&rPtr);
-		cout << "\n    Height - ";
+		cout << "\n    Width - ";
 		init(&hPtr);
+		*rPtr *= *rPtr < Fraction() ? -1 : 1;
+		*hPtr *= *hPtr < Fraction() ? -1 : 1;
 		*c2 = new Rectangle(*frxPtr, *fryPtr, *rPtr, *hPtr);
 		delete frxPtr;
 		delete fryPtr;

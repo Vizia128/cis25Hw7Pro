@@ -134,9 +134,11 @@ void menuHw7Ex1() {
 							break;
 						default:
 							cout << "\n    WRONG OPTION!\n";
+							break;
 						}
 						
 					} while (option != 4);
+					option = 0;
 					break;
 				case 2:
 					do {
@@ -170,8 +172,10 @@ void menuHw7Ex1() {
 							break;
 						default:
 							cout << "\n    WRONG OPTION!\n";
+							break;
 						}
 					} while (option != 4);
+					option = 0;
 					break;
 				case 3:
 					cout << "\n      " << s1ptr->getType() << " 1 -- " << *s1ptr
@@ -202,10 +206,10 @@ void menuHw7Ex1() {
 				cin >> option;
 				switch (option) {
 				case 1:
-					s1ptr->areaCompare(*s2ptr);
+					s2ptr->areaCompare(*s1ptr);
 					break;
 				case 2:
-					s1ptr->perimeterCompare(*s2ptr);
+					s2ptr->perimeterCompare(*s1ptr);
 					break;
 				case 3:
 					cout << "\n      " << s1ptr->getType() << " 1 -- " << *s1ptr
@@ -247,14 +251,16 @@ void menuHw7Ex1() {
 			if (option == 1) {
 				delete s1ptr;
 				delete s2ptr;
-				s1ptr = new Circle(0, 0, 1);
-				s2ptr = new Circle(1, 1, 2);
+				s1ptr = new Circle(rand()%10, rand() % 10, rand() % 10);
+				s2ptr = new Circle(rand() % 10, rand() % 10, rand() % 10);
 			}
 			else if (option == 2) {
 				delete s1ptr;
 				delete s2ptr;
-				s1ptr = new Rectangle(0, 0, 1, 2);
-				s2ptr = new Rectangle(1, 1, 4, 2);
+				s1ptr = new Rectangle(rand() % 10, rand() % 10,
+					rand() % 10, rand() % 10);
+				s2ptr = new Rectangle(rand() % 10, rand() % 10,
+					rand() % 10, rand() % 10);
 			}
 			else 
 				cout << "/n    peanutbutter";

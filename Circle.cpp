@@ -14,8 +14,8 @@ Circle::Circle() : cPtr(new Point()), rPtr(new Fraction()) {
 Circle::Circle(int f1, int f2, int r)
 	: cPtr(new Point(f1, f2)), rPtr(new Fraction(r)) {
 }
-Circle::Circle(const Point& P, const Fraction& F) 
-	: cPtr(new Point(P)), rPtr(new Fraction(F)) {
+Circle::Circle(const Point& P, const Fraction& r) 
+	: cPtr(new Point(P)), rPtr(new Fraction(r)) {
 }
 Circle::Circle(const Fraction& Fx, const Fraction& Fy, const Fraction& F)
 	: cPtr(new Point(Fx,Fy)), rPtr(new Fraction(F)) {
