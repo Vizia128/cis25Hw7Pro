@@ -81,8 +81,9 @@ void Rectangle::moveByY(char l) {
 }
 
 void Rectangle::areaCompare(const Shape& with)const {
-	with.areaCompare(*this);
-}
+	with.areaCompare(*this);	//This swaps Shape 1 and 2 
+}								//so call s2ptr->areaCompare(*s1ptr)
+
 void Rectangle::areaCompare(const Rectangle& C)const {
 	Fraction area1(*lPtr * *wPtr);
 	Fraction area2(*C.lPtr * *C.wPtr);
@@ -111,8 +112,9 @@ void Rectangle::areaCompare(const Circle&)const {
 }
 
 void Rectangle::perimeterCompare(const Shape& with)const {
-	with.perimeterCompare(*this);
-}
+	with.perimeterCompare(*this);	//This swaps Shape 1 and 2 
+}									//so call s2ptr->areaCompare(*s1ptr)
+
 void Rectangle::perimeterCompare(const Rectangle& C)const {
 	Fraction perim1((*lPtr + *wPtr)*2);
 	Fraction perim2((*C.lPtr + *C.wPtr)*2);
@@ -182,6 +184,7 @@ void Rectangle::overlapShape(const Shape& with)const {
 	with.overlapShape(*this);
 }
 void Rectangle::overlapShape(const Rectangle& R)const {
+	// This doesn't always work
 	int type = this->overlapType(R);
 	Fraction del[4];
 	del[0] = cPtr->getFrx() - R.cPtr->getFrx();
@@ -203,7 +206,7 @@ void Rectangle::overlapShape(const Rectangle& R)const {
 	}
 }
 void Rectangle::overlapShape(const Circle& C)const {
-	cout << "\/ERROR Rectangle::overlapShape(const Circle&)";
+	cout << "\nERROR Rectangle::overlapShape(const Circle&)";
 }
 
 const char* Rectangle::getType()const {

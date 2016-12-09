@@ -13,7 +13,6 @@ using namespace std;
 void menuHw7Ex1() {
 	Shape* s1ptr = nullptr;
 	Shape* s2ptr = nullptr;
-	Point* movePtr = nullptr;
 	int overlapType = -1;
 	int option = -1;
 
@@ -48,11 +47,14 @@ void menuHw7Ex1() {
 				switch (option) {
 				case 1:
 					delete s1ptr;
+					delete s2ptr;
 					init(&s1ptr, &s2ptr, "Circle");
 					cout << "\n      " << s1ptr->getType() << " 1 -- " << *s1ptr
 						<< "\n      " << s2ptr->getType() << " 2 -- " << *s2ptr;
 					break;
 				case 2:
+					delete s1ptr;
+					delete s2ptr;
 					init(&s1ptr, &s2ptr, "Rectangle");
 					cout << "\n      " << s1ptr->getType() << " 1 -- " << *s1ptr
 						<< "\n      " << s2ptr->getType() << " 2 -- " << *s2ptr;
@@ -80,7 +82,7 @@ void menuHw7Ex1() {
 				//	<< s1ptr->getCenter().getQuadrant()
 				//	<< "\n    " << s2ptr->getType() << " 2 is centered in Quadrant : "
 				//	<< s2ptr->getCenter().getQuadrant();
-				s1ptr->overlapType(*s2ptr);
+				overlapType = s1ptr->overlapType(*s2ptr);
 			}
 			break;
 		case 3:

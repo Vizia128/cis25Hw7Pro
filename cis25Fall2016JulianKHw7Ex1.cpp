@@ -12,7 +12,7 @@ int main() {
 		<< "\n  Assignment Number : Homework 7,"
 		<< "\n                      Exercise #1"
 		<< "\n  Written by :        Julian K"
-		<< "\n  Due Date :            2016/12/6";
+		<< "\n  Due Date :            2016/12/8";
 
 	menuHw7Ex1();
 	return 0;
@@ -24,10 +24,16 @@ I added the full rectangle shape and option 5 just for fun.
 Option 5 displays the overlapping area,
 however it was difficult to test how how accurate 
 the circle overlapping area was and I know to 
-rectangle overlapping area is only sometimes right
+rectangle overlapping area is often wrong.
 
-I also have a different print meathod than you had 
-on your example.
+This could be because I get a C4244 ERROR 
+'argument': conversion from 'double' to 'const int'
+on lines 192 and 193 in Rectangle.cpp
+
+
+Hidden option: 12 will create two random circles or rectangles
+I used this to quickly test different shapes and thought I 
+should leave it in.
 */
 
 //	Output
@@ -347,4 +353,3 @@ on your example.
 //	Select an option(use integer value only) : 7
 //
 //    Having fun!
-//

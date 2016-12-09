@@ -78,8 +78,8 @@ void Circle::moveByY(char l) {
 }
 
 void Circle::areaCompare(const Shape& with)const {
-	with.areaCompare(*this);
-}
+	with.areaCompare(*this);	//This swaps Shape 1 and 2 
+}								//so call s2ptr->areaCompare(*s1ptr)
 void Circle::areaCompare(const Rectangle&)const {
 	cout << "\n    Circle::areaCompare(const Rectangle&)";
 }
@@ -106,8 +106,9 @@ void Circle::areaCompare(const Circle& C)const {
 }
 
 void Circle::perimeterCompare(const Shape& with)const {
-	with.perimeterCompare(*this);
-}
+	with.perimeterCompare(*this);	//This swaps Shape 1 and 2 
+}									//so call s2ptr->perimCompare(*s1ptr)
+
 void Circle::perimeterCompare(const Rectangle&)const {
 	cout << "\n    Circle::perimeterCompare(const Rectangle&)";
 }
@@ -194,7 +195,7 @@ double Circle::overlapArea(const Circle& C)const {
 	//	cout << "\ndistance : " << d;
 	double cosTh1 = cosTheta(*rPtr, *C.rPtr, d);
 	double cosTh2 = cosTheta(*C.rPtr, *rPtr, d);
-
+	//	Testing 
 	//	cout << "\nArea of sector 1 : " << theta(*rPtr, *C.rPtr, d) * *rPtr * *rPtr << "\t Theta1 : " << theta(*rPtr, *C.rPtr, d) //yay
 	//		<< "\nArea of sector 2 : " << theta(*C.rPtr, *rPtr, d) * *C.rPtr * *C.rPtr << "\t Theta2 : " << theta(*C.rPtr, *rPtr, d)  //yay
 	//		<< "\nArea of triangle 1 : " << cosTh1 * sqroot(1 - cosTh1*cosTh1) * *rPtr * *rPtr << "\t costheta1 : " << cosTh1

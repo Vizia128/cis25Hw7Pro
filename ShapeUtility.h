@@ -13,8 +13,6 @@ void init(Shape** c1, Shape** c2, string type) {
 	Fraction *fryPtr = nullptr;
 	Fraction *rPtr = nullptr;
 	Fraction *hPtr = nullptr;
-	delete *c1;
-	delete *c2;
 
 	if (type == "Circle") {
 		cout << "\nEnter dimensions of Circle 1"

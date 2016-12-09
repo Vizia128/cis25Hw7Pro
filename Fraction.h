@@ -11,7 +11,6 @@ public:
 	Fraction(int, int);
 	Fraction(const Fraction&);
 
-
 	void print()const;
 	~Fraction();
 	int getNum()const;
@@ -25,13 +24,11 @@ public:
 	Fraction subtract(const Fraction&)const;
 	Fraction multiply(const Fraction&)const;
 	Fraction divide(const Fraction&)const;
-
 	
 	friend	Fraction add(const Fraction&, const Fraction&);
 	friend	Fraction subtract(const Fraction&, const Fraction&);
 	friend	Fraction multiply(const Fraction&, const Fraction&);
 	friend	Fraction divide(const Fraction&, const Fraction&);
-
 
 	Fraction operator=(const Fraction&);
 	Fraction operator+(const Fraction&);
@@ -57,7 +54,6 @@ public:
 	Fraction operator/(const int);
 
 	operator double();
-
 
 	friend std::ostream& operator<<(std::ostream &out, const Fraction &F);
 //	friend std::ostream& operator>>(std::ostream &in, const Fraction &F);
